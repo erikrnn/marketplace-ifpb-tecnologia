@@ -25,3 +25,4 @@ replay_pid*
 
 # Variáveis de ambiente locais
 .env
+.DS_Store
