@@ -23,7 +23,10 @@ INSERT INTO curso (nome) VALUES
 -- Categorias: troque ou acrescente as da sua equipe. Mantenha os ids: os anúncios de exemplo usam categoria_id.
 -- O slug vai na URL da busca (?categoria=eletronicos): minúsculas, sem acentos, hífen no lugar de espaços.
 INSERT INTO categoria (id, nome, slug) VALUES
-  (1, 'Eletrônicos', 'eletronicos');
+  (1, 'Periféricos e acessórios', 'perifericos-e-acessorios'),
+  (2, 'Computadores e armazenamento', 'computadores-e-armazenamento'),
+  (3, 'Eletrônica e automação', 'eletronica-e-automacao'),
+  (4, 'Áudio e vídeo', 'audio-e-video');
 
 -- ---------------------------------------------------------------------------
 -- Dados de exemplo, para testar a busca. Opcional: pode adaptar ou apagar daqui para baixo.
@@ -55,6 +58,14 @@ INSERT INTO anuncio (id, usuario_id, categoria_id, titulo, descricao, modalidade
   (16, 1, 1, 'Mouse pad gamer', 'Mouse pad grande, 80 x 30 cm.', 'doacao', NULL, 'seminovo', 'Bloco de Informática', 'ativo', '2026-10-11T09:45:00Z', '2026-10-11T09:45:00Z'),
   (17, 1, 1, 'Fonte de alimentação 12 V', 'Fonte 12 V 2 A, serve para fitas de LED e roteadores.', 'doacao', NULL, 'usado', 'Portaria principal', 'ativo', '2026-10-14T14:10:00Z', '2026-10-14T14:10:00Z'),
   (18, 1, 1, 'HD externo 1 TB', 'HD externo USB 3.0 de 1 TB, formatado.', 'venda', 20000, 'seminovo', 'Biblioteca', 'ativo', '2026-10-16T16:00:00Z', '2026-10-16T16:00:00Z');
+
+-- Espalha os anúncios de exemplo pelas categorias do grupo, para o filtro mostrar resultado em todas.
+UPDATE anuncio SET categoria_id = CASE id
+  WHEN 1 THEN 4 WHEN 2 THEN 1 WHEN 3 THEN 1 WHEN 4 THEN 2 WHEN 5 THEN 3 WHEN 6 THEN 2
+  WHEN 7 THEN 3 WHEN 8 THEN 3 WHEN 9 THEN 3 WHEN 10 THEN 4 WHEN 11 THEN 4 WHEN 12 THEN 3
+  WHEN 13 THEN 2 WHEN 14 THEN 4 WHEN 15 THEN 4 WHEN 16 THEN 1 WHEN 17 THEN 3 WHEN 18 THEN 2
+END
+WHERE id BETWEEN 1 AND 18;
 
 -- A primeira foto de cada anúncio é a capa (capa = 1).
 INSERT INTO anuncio_foto (anuncio_id, chave, ordem, capa) VALUES
