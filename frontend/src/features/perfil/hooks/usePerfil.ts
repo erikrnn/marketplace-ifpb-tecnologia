@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import type { AnuncioResumo, Pagina, Perfil } from '../../../tipos/api';
-import { ErroApi } from '../servicos/http';
+import { comoErroApi, type ErroApi } from '../servicos/http';
 import {
     buscarPerfil,
     buscarUsuarioLogado,
     listarAnunciosDoUsuario,
 } from '../servicos/usuariosApi';
-
-function comoErroApi(erro: unknown): ErroApi {
-    return erro instanceof ErroApi ? erro : new ErroApi(0, 'Algo deu errado. Tente novamente.');
-}
 
 // alvo: id de outro estudante, ou 'eu' para o próprio perfil.
 export function usePerfil(alvo: number | 'eu') {

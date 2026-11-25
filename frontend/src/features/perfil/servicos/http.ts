@@ -23,6 +23,12 @@ export class ErroApi extends Error {
     }
 }
 
+// Garante que o que foi capturado num catch vire um ErroApi.
+export function comoErroApi(erro: unknown): ErroApi {
+    return erro instanceof ErroApi ? erro : new ErroApi(0, 'Algo deu errado. Tente novamente.');
+}
+
+
 function mensagemPadrao(status: number): string {
     if (status === 401) return 'Sessão expirada. Faça login novamente.';
     if (status === 404) return 'Não encontrado.';
