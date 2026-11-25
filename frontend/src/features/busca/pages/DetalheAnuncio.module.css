@@ -1,0 +1,236 @@
+.pagina {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.voltar {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #2563eb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+}
+
+.fotografias {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+}
+
+.imagem {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.categoria {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.titulo {
+  margin: 0;
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.estado {
+  align-self: flex-start;
+  padding: 5px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #f1f5f9;
+  color: #334155;
+  font-size: 13px;
+}
+
+.preco {
+  color: #1e293b;
+  font-size: 32px;
+}
+
+.doacao {
+  color: #15803d;
+  font-size: 28px;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 16px 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dados dt {
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.dados dd {
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.descricao h2,
+.anunciante h2 {
+  margin: 0 0 12px;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.descricao p {
+  margin: 0;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.anunciante {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar,
+.avatarVazio {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.avatarVazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e8f0;
+  color: #334155;
+  font-size: 22px;
+}
+
+.perfil strong {
+  color: #1e293b;
+}
+
+.perfil p {
+  margin: 5px 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.linkPerfil {
+  color: #2563eb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.linkPerfil:hover {
+  text-decoration: underline;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.acoes button {
+  flex: 1;
+  min-height: 44px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: not-allowed;
+}
+
+.aviso {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.mensagem {
+  padding: 32px;
+  text-align: center;
+  color: #64748b;
+}
+
+.erro {
+  padding: 16px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+  .pagina {
+    padding: 16px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .imagem {
+    height: 280px;
+  }
+
+  .titulo {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dados {
+    grid-template-columns: 1fr;
+  }
+}
