@@ -1,0 +1,109 @@
+.formulario {
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.titulo {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(170px, 1fr)
+  );
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.campo input,
+.campo select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font: inherit;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.aplicar,
+.limpar {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.aplicar {
+  border: 1px solid #2563eb;
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.aplicar:hover {
+  background-color: #1d4ed8;
+}
+
+.limpar {
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+}
+
+.limpar:hover {
+  background-color: #f1f5f9;
+}
+
+.aplicar:focus-visible,
+.limpar:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.erro {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #b91c1c;
+}
+
+@media (max-width: 600px) {
+  .campos {
+    grid-template-columns: 1fr;
+  }
+
+  .acoes button {
+    flex: 1;
+  }
+}

@@ -1,10 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { AnuncioCard } from '../components/AnuncioCard';
-import { buscarAnuncios } from '../services/anuncioService';
+import { FiltrosBusca } from '../components/FiltrosBusca';
+
+import {
+  buscarAnuncios,
+  buscarCategorias,
+} from '../services/anuncioService';
+
+import { lerFiltros } from '../utils/filtros';
 
 import type {
   AnuncioResumo,
+  Categoria,
   Modalidade,
   Pagina,
 } from '../types/anuncio';
@@ -20,14 +29,47 @@ export function BuscaAnuncios({
   modalidade,
   token,
 }: BuscaAnunciosProps) {
+  const [parametros, setParametros] = useSearchParams();
+
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [erroCategorias, setErroCategorias] =
+    useState<string | null>(null);
+
   const [resultado, setResultado] =
     useState<Pagina<AnuncioResumo> | null>(null);
 
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
 
+  const filtros = useMemo(
+    () => lerFiltros(parametros, modalidade),
+    [parametros, modalidade],
+  );
+
   const titulo =
     modalidade === 'venda' ? 'Vendas' : 'Doações';
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    setErroCategorias(null);
+
+    buscarCategorias(controller.signal)
+      .then((dados) => {
+        if (!controller.signal.aborted) {
+          setCategorias(dados);
+        }
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) {
+          setErroCategorias(
+            'Não foi possível carregar as categorias.',
+          );
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,13 +79,7 @@ export function BuscaAnuncios({
     setResultado(null);
 
     buscarAnuncios(
-      {
-        modalidade,
-        ordem: 'data',
-        direcao: 'desc',
-        pagina: 1,
-        tamanho: 10,
-      },
+      filtros,
       token,
       controller.signal,
     )
@@ -68,7 +104,18 @@ export function BuscaAnuncios({
       });
 
     return () => controller.abort();
-  }, [modalidade, token]);
+  }, [filtros, token]);
+
+  function limparFiltros() {
+    const novosParametros = new URLSearchParams();
+
+    novosParametros.set(
+      'tamanho',
+      String(filtros.tamanho ?? 10),
+    );
+
+    setParametros(novosParametros);
+  }
 
   return (
     <main className={styles.pagina}>
@@ -81,6 +128,22 @@ export function BuscaAnuncios({
             : 'Encontre produtos disponíveis para doação.'}
         </p>
       </header>
+
+      {erroCategorias && (
+        <p className={styles.erro} role="alert">
+          {erroCategorias}
+        </p>
+      )}
+
+      <FiltrosBusca
+        key={`${modalidade}-${parametros.toString()}-${categorias.length}`}
+        filtros={filtros}
+        categorias={categorias}
+        onAplicar={(novosParametros) =>
+          setParametros(novosParametros)
+        }
+        onLimpar={limparFiltros}
+      />
 
       {carregando && (
         <p className={styles.mensagem} role="status">
