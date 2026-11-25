@@ -1,0 +1,66 @@
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espaco-2);
+    padding: var(--espaco-2) var(--espaco-4);
+    border: 1px solid transparent;
+    border-radius: var(--raio);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.botao:focus-visible {
+    outline: none;
+    box-shadow: var(--sombra-foco);
+}
+
+.botao:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.primario {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.primario:hover:not(:disabled) {
+    background: var(--cor-primaria-escura);
+}
+
+.secundario {
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    border-color: var(--cor-borda);
+}
+
+.secundario:hover:not(:disabled) {
+    background: var(--cor-fundo-suave);
+}
+
+.perigo {
+    background: var(--cor-perigo);
+    color: #fff;
+}
+
+.perigo:hover:not(:disabled) {
+    background: var(--cor-perigo-escura);
+}
+
+.spinner {
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}

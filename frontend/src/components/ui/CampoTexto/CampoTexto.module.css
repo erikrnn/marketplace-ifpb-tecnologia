@@ -1,0 +1,48 @@
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+}
+
+.rotulo {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.entrada {
+    padding: var(--espaco-2) var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    font: inherit;
+    color: inherit;
+    background: var(--cor-fundo);
+}
+
+.entrada:focus-visible {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: var(--sombra-foco);
+}
+
+.entrada:disabled {
+    background: var(--cor-fundo-suave);
+    cursor: not-allowed;
+}
+
+.comErro {
+    border-color: var(--cor-perigo);
+}
+
+.ajuda,
+.erro {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.ajuda {
+    color: var(--cor-texto-suave);
+}
+
+.erro {
+    color: var(--cor-perigo);
+}
