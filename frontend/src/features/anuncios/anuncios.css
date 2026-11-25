@@ -1,0 +1,42 @@
+/* Estilos das telas de anúncio (RF03). Escopo: classes .anuncio-*, .campo, .foto*, .btn* */
+.anuncio-pagina { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem; font-family: system-ui, sans-serif; color: #1f2937; }
+.anuncio-estreita { max-width: 640px; }
+.anuncio-form { display: flex; flex-direction: column; gap: 1rem; }
+.anuncio-dica { color: #6b7280; font-size: .85rem; font-weight: 400; }
+.campo { display: flex; flex-direction: column; gap: .25rem; flex: 1; font-weight: 600; }
+.campo input, .campo select, .campo textarea { font: inherit; font-weight: 400; padding: .5rem; border: 1px solid #9ca3af; border-radius: 6px; }
+.campo-erro input, .campo-erro select, .campo-erro textarea { border-color: #b91c1c; }
+.linha { display: flex; gap: 1rem; flex-wrap: wrap; }
+.msg-erro { color: #b91c1c; font-weight: 400; }
+ul.msg-erro { padding-left: 1.2rem; margin: .5rem 0; }
+.erro-geral { background: #fee2e2; color: #7f1d1d; padding: .6rem .8rem; border-radius: 6px; }
+.acoes { display: flex; gap: .75rem; flex-wrap: wrap; }
+.btn { display: inline-block; font: inherit; padding: .5rem 1rem; border: 1px solid #9ca3af; border-radius: 6px; background: #fff; color: inherit; cursor: pointer; text-decoration: none; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primario { background: #166534; border-color: #166534; color: #fff; }
+.btn-perigo { color: #b91c1c; border-color: #b91c1c; }
+.btn-mini { padding: .2rem .5rem; font-size: .8rem; }
+.btn-ativo { background: #1f2937; border-color: #1f2937; color: #fff; }
+
+.fotos { border: 1px solid #d1d5db; border-radius: 8px; padding: .75rem; }
+.fotos-grade { list-style: none; padding: 0; margin: .75rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; }
+.foto { position: relative; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: #f3f4f6; }
+.foto-capa { border-color: #166534; }
+.foto img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.foto-acoes { display: flex; flex-direction: column; gap: .25rem; padding: .35rem; }
+.selo { position: absolute; top: .3rem; left: .3rem; background: #166534; color: #fff; font-size: .7rem; padding: .1rem .4rem; border-radius: 4px; }
+.selo-nova { left: auto; right: .3rem; background: #1d4ed8; }
+.selo-estado { position: static; background: #1f2937; font-size: .8rem; }
+
+.seletor-estado { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .5rem 0 1rem; }
+.estado-botoes { display: flex; gap: .35rem; flex-wrap: wrap; }
+.painel-dono { border-top: 1px solid #e5e7eb; margin-top: 1rem; padding-top: .5rem; }
+
+.detalhe { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 700px) { .detalhe { grid-template-columns: 1fr; } }
+.detalhe-foto { width: 100%; border-radius: 8px; aspect-ratio: 4 / 3; object-fit: cover; background: #f3f4f6; }
+.miniaturas { list-style: none; display: flex; gap: .4rem; padding: 0; flex-wrap: wrap; }
+.miniaturas button { border: 0; padding: 0; background: none; cursor: pointer; }
+.miniaturas img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; border: 2px solid transparent; }
+.miniaturas img.ativa { border-color: #166534; }
+.preco { font-size: 1.5rem; font-weight: 700; margin: 0 0 .5rem; }
