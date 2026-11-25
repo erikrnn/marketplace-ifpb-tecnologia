@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { GaleriaFotos } from '../components/GaleriaFotos';
 
 import type {
   AnuncioDetalhe,
@@ -79,47 +80,37 @@ export function DetalheAnuncio({
           className={styles.fotografias}
           aria-label="Fotografias do anúncio"
         >
-          <img
-            src={anuncio.capaUrl}
-            alt={anuncio.titulo}
-            className={styles.imagem}
+          <GaleriaFotos
+            key={anuncio.id}
+            fotos={anuncio.fotos}
+            titulo={anuncio.titulo}
           />
         </section>
 
         <section className={styles.informacoes}>
-          <span className={styles.categoria}>
-            {anuncio.categoria.nome}
-          </span>
+          <span className={styles.categoria}>{anuncio.categoria.nome}</span>
 
-          <h1 className={styles.titulo}>
-            {anuncio.titulo}
-          </h1>
+          <h1 className={styles.titulo}>{anuncio.titulo}</h1>
 
-          <span className={styles.estado}>
-            {rotulosEstado[anuncio.estado]}
-          </span>
+          <span className={styles.estado}>{rotulosEstado[anuncio.estado]}</span>
 
-          <strong
-            className={isDoacao ? styles.doacao : styles.preco}
-          >
+          <strong className={isDoacao ? styles.doacao : styles.preco}>
             {isDoacao
-              ? 'Doação'
+              ? "Doação"
               : anuncio.preco !== null
                 ? formatadorPreco.format(anuncio.preco)
-                : 'Preço indisponível'}
+                : "Preço indisponível"}
           </strong>
 
           <dl className={styles.dados}>
             <div>
               <dt>Modalidade</dt>
-              <dd>{isDoacao ? 'Doação' : 'Venda'}</dd>
+              <dd>{isDoacao ? "Doação" : "Venda"}</dd>
             </div>
 
             <div>
               <dt>Estado de conservação</dt>
-              <dd>
-                {rotulosConservacao[anuncio.estadoConservacao]}
-              </dd>
+              <dd>{rotulosConservacao[anuncio.estadoConservacao]}</dd>
             </div>
 
             <div>
@@ -129,11 +120,7 @@ export function DetalheAnuncio({
 
             <div>
               <dt>Publicado em</dt>
-              <dd>
-                {formatadorData.format(
-                  new Date(anuncio.publicadoEm),
-                )}
-              </dd>
+              <dd>{formatadorData.format(new Date(anuncio.publicadoEm))}</dd>
             </div>
           </dl>
 
@@ -153,10 +140,7 @@ export function DetalheAnuncio({
                   className={styles.avatar}
                 />
               ) : (
-                <span
-                  className={styles.avatarVazio}
-                  aria-hidden="true"
-                >
+                <span className={styles.avatarVazio} aria-hidden="true">
                   {anuncio.anunciante.nome.charAt(0)}
                 </span>
               )}
@@ -191,8 +175,7 @@ export function DetalheAnuncio({
           </div>
 
           <p className={styles.aviso}>
-            Interesse e negociação estarão disponíveis
-            nas próximas etapas.
+            Interesse e negociação estarão disponíveis nas próximas etapas.
           </p>
         </section>
       </div>
