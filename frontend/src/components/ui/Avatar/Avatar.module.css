@@ -1,0 +1,29 @@
+.avatar {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--cor-primaria);
+    color: #fff;
+    font-weight: 700;
+}
+
+.medio {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+}
+
+.grande {
+    width: 112px;
+    height: 112px;
+    font-size: 2.2rem;
+}
+
+.imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

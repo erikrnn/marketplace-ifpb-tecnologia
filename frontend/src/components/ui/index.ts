@@ -1,3 +1,5 @@
+export { Avatar } from './Avatar/Avatar';
+export type { AvatarProps } from './Avatar/Avatar';
 export { Botao } from './Botao/Botao';
 export type { BotaoProps } from './Botao/Botao';
 export { Cartao } from './Cartao/Cartao';

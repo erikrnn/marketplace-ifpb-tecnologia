@@ -22,8 +22,8 @@ export function Cartao({
 }: CartaoProps) {
     // As URLs de foto da API expiram em 1 hora. Se a imagem falhar ao carregar,
     // mostramos o espaço reservado em vez do ícone de imagem quebrada.
-    const [imagemFalhou, setImagemFalhou] = useState(false);
-    const mostrarImagem = Boolean(imagemUrl) && !imagemFalhou;
+    const [urlComFalha, setUrlComFalha] = useState<string | null>(null);
+    const mostrarImagem = Boolean(imagemUrl) && urlComFalha !== imagemUrl;
 
     return (
         <article className={juntarClasses(estilos.cartao, className)}>
@@ -34,7 +34,7 @@ export function Cartao({
                         alt={imagemAlt}
                         className={estilos.imagem}
                         loading="lazy"
-                        onError={() => setImagemFalhou(true)}
+                        onError={() => setUrlComFalha(imagemUrl ?? null)}
                     />
                 ) : (
                     <div className={estilos.semImagem}>Sem foto</div>
