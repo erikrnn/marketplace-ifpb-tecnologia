@@ -1,0 +1,33 @@
+.paginacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-4);
+}
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espaco-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.botao {
+    min-width: 40px;
+    padding: var(--espaco-1) var(--espaco-3);
+}
+
+.reticencias {
+    padding: 0 var(--espaco-1);
+    color: var(--cor-texto-suave);
+}
+
+.tamanho {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--espaco-2);
+}

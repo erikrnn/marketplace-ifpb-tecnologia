@@ -1,6 +1,12 @@
 export { Botao } from './Botao/Botao';
 export type { BotaoProps } from './Botao/Botao';
+export { Cartao } from './Cartao/Cartao';
+export type { CartaoProps } from './Cartao/Cartao';
 export { CampoTexto } from './CampoTexto/CampoTexto';
 export type { CampoTextoProps } from './CampoTexto/CampoTexto';
+export { Paginacao } from './Paginacao/Paginacao';
+export type { PaginacaoProps } from './Paginacao/Paginacao';
+export { Selo } from './Selo/Selo';
+export type { SeloProps } from './Selo/Selo';
 export { Seletor } from './Seletor/Seletor';
 export type { OpcaoSeletor, SeletorProps } from './Seletor/Seletor';
