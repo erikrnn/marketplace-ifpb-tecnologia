@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { AnuncioCard } from '../components/AnuncioCard';
 import { FiltrosBusca } from '../components/FiltrosBusca';
+import { Paginacao } from '../components/Paginacao';
 
 import {
   buscarAnuncios,
@@ -16,6 +17,7 @@ import type {
   Categoria,
   Modalidade,
   Pagina,
+  TamanhoPagina,
 } from '../types/anuncio';
 
 import styles from './BuscaAnuncios.module.css';
@@ -32,6 +34,7 @@ export function BuscaAnuncios({
   const [parametros, setParametros] = useSearchParams();
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+
   const [erroCategorias, setErroCategorias] =
     useState<string | null>(null);
 
@@ -117,6 +120,30 @@ export function BuscaAnuncios({
     setParametros(novosParametros);
   }
 
+  function mudarPagina(novaPagina: number) {
+    const novosParametros = new URLSearchParams(parametros);
+
+    novosParametros.set(
+      'pagina',
+      String(novaPagina),
+    );
+
+    setParametros(novosParametros);
+  }
+
+  function mudarTamanho(novoTamanho: TamanhoPagina) {
+    const novosParametros = new URLSearchParams(parametros);
+
+    novosParametros.set(
+      'tamanho',
+      String(novoTamanho),
+    );
+
+    novosParametros.set('pagina', '1');
+
+    setParametros(novosParametros);
+  }
+
   return (
     <main className={styles.pagina}>
       <header className={styles.cabecalho}>
@@ -165,7 +192,7 @@ export function BuscaAnuncios({
 
           {resultado.itens.length === 0 ? (
             <p className={styles.mensagem}>
-              Nenhum anúncio encontrado.
+              Nenhum anúncio encontrado nesta página.
             </p>
           ) : (
             <section
@@ -180,6 +207,15 @@ export function BuscaAnuncios({
               ))}
             </section>
           )}
+
+          <Paginacao
+            pagina={resultado.pagina}
+            tamanho={filtros.tamanho ?? 10}
+            total={resultado.total}
+            totalPaginas={resultado.totalPaginas}
+            onMudarPagina={mudarPagina}
+            onMudarTamanho={mudarTamanho}
+          />
         </>
       )}
     </main>
